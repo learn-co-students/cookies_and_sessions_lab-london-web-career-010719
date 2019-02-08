@@ -1,0 +1,25 @@
+<h1>Your Cart</h1>
+
+ <h4>Current Cart:</h4>
+
+ <% if session[:cart] %>
+  <ol>
+    <% session[:cart].each do |item| %>
+      <li>
+        <%= item %>
+      </li>
+    <% end %>
+  </ol>
+<% else %>
+  <p>You have no items - add some to get started</p>
+<% end %>
+
+
+<%= form_tag products_add_path, method: :post do %>
+
+   Add an item:
+  <%= text_field_tag :product %> <br>
+
+   <%= submit_tag "add to cart"%>
+
+ <% end %>
